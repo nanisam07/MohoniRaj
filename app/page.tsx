@@ -1,33 +1,69 @@
-import Hero from "@/components/Hero";
-import WorkshopBanner from "@/components/WorkshopBanner";
-import TrustStrip from "@/components/TrustStrip";
-import TransformationStoriesPreview from "@/components/TransformationStoriesPreview";
-import HooponoponoSection from "@/components/HooponoponoSection";
-import FourPhrases from "@/components/FourPhrases";
+"use client";
+
+import React from "react";
+import TopBanner from "@/components/TopBanner";
+import HeroSection from "@/components/HeroSection";
+import StatsCounter from "@/components/StatsCounter";
+import CaseStudies from "@/components/CaseStudies";
+import EmotionalChallenges from "@/components/EmotionalChallenges";
+import TargetAudience from "@/components/TargetAudience";
 import ThreeSecrets from "@/components/ThreeSecrets";
-import TransformationSection from "@/components/TransformationSection";
-import WorkshopExperience from "@/components/WorkshopExperience";
-import AboutPreview from "@/components/AboutPreview";
-import Credentials from "@/components/Credentials";
-import TestimonialCarousel from "@/components/TestimonialCarousel";
-import CTASection from "@/components/CTASection";
+import WhatYoullLearn from "@/components/WhatYoullLearn";
+import BeforeAfter from "@/components/BeforeAfter";
+import AboutMohiniraj from "@/components/AboutMohiniraj";
+import Certifications from "@/components/Certifications";
+import ClientReviews from "@/components/ClientReviews";
+import FAQ from "@/components/FAQ";
+import Footer from "@/components/Footer";
+import StickyBar from "@/components/StickyBar";
 
 export default function Home() {
   return (
-    <div className="space-y-0 overflow-hidden">
-      <Hero />
-      <WorkshopBanner />
-      <TrustStrip />
-      <TransformationStoriesPreview />
-      <HooponoponoSection />
-      <FourPhrases />
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 pb-20 sm:pb-24">
+      {/* 1. Top Announcement Banner */}
+      <TopBanner />
+
+      {/* 2. Cinematic Hero Section */}
+      <HeroSection />
+
+      {/* 3. Impact & Experience Counters */}
+      <StatsCounter />
+
+      {/* 4. Case Studies (Transformation Stories) */}
+      <CaseStudies />
+
+      {/* 5. Emotional Challenges */}
+      <EmotionalChallenges />
+
+      {/* 6. Target Audience */}
+      <TargetAudience />
+
+      {/* 7. 3 Secrets (01, 02, 03 Stages) */}
       <ThreeSecrets />
-      <TransformationSection />
-      <WorkshopExperience />
-      <AboutPreview />
-      <Credentials />
-      <TestimonialCarousel />
-      <CTASection />
+
+      {/* 8. What You'll Learn & Experience */}
+      <WhatYoullLearn />
+
+      {/* 9. Before vs After Workshop */}
+      <BeforeAfter />
+
+      {/* 10. About Mohiniraj */}
+      <AboutMohiniraj />
+
+      {/* 11. Certifications */}
+      <Certifications />
+
+      {/* 12. Client Reviews */}
+      <ClientReviews />
+
+      {/* 13. Frequently Asked Questions */}
+      <FAQ />
+
+      {/* 14. Footer */}
+      <Footer />
+
+      {/* 15. Sticky Workshop Countdown Bar */}
+      <StickyBar />
     </div>
   );
 }

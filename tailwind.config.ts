@@ -9,52 +9,54 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: "#0B101A",
-          900: "#101827", // Primary Dark
-          800: "#172338",
-          700: "#1B2A41", // Secondary
-          600: "#273A59",
+        brand: {
+          950: "#060E20",
+          900: "#0B1B3D", // Primary Dark Blue
+          800: "#0D234A",
+          700: "#162B54",
+          600: "#1E3A8A",
+          500: "#2563EB", // Accent Blue
+          400: "#3B82F6",
+          100: "#D0E4F7",
+          50: "#EBF3FA",  // Light Blue Background
+          25: "#F4F8FC",  // Ice Blue Canvas
         },
-        sage: {
-          100: "#F0F4EE",
-          300: "#C6D3BF",
-          500: "#A8B8A0", // Soft Sage
-          700: "#7C8D74",
+        slate: {
+          900: "#0F172A",
+          800: "#1E293B",
+          700: "#334155",
+          600: "#475569",
+          500: "#64748B",
+          400: "#94A3B8",
+          200: "#E2E8F0",
+          100: "#F1F5F9",
+          50: "#F8FAFC",
         },
-        sand: {
-          100: "#F7F4ED", // Soft Cream
-          200: "#E8DDC8", // Warm Sand
-          300: "#D8C7AA",
-        },
-        gold: {
-          400: "#DBC086",
-          500: "#C8A96B", // Champagne Gold
-          600: "#A68648",
+        accentGold: {
+          500: "#D97706",
+          400: "#F59E0B",
+          50: "#FFFBEB",
         },
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Cormorant Garamond", "Playfair Display", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+      },
+      boxShadow: {
+        'apple': '0 20px 40px -15px rgba(11, 27, 61, 0.07), 0 8px 16px -4px rgba(11, 27, 61, 0.04)',
+        'apple-hover': '0 30px 60px -12px rgba(11, 27, 61, 0.12), 0 12px 24px -6px rgba(11, 27, 61, 0.06)',
+        'card': '0 4px 20px -2px rgba(11, 27, 61, 0.04)',
+        'glow-blue': '0 0 50px -10px rgba(37, 99, 235, 0.25)',
       },
       animation: {
-        "float": "float 6s ease-in-out infinite",
-        "pulse-slow": "pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "shimmer": "shimmer 2.5s infinite linear",
+        "float-slow": "float 8s ease-in-out infinite",
+        "pulse-subtle": "pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-      },
-      backgroundImage: {
-        "radial-gradient": "radial-gradient(var(--tw-gradient-stops))",
-        "conic-gradient": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
   },

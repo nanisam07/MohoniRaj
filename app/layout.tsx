@@ -52,13 +52,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className="bg-navy-900 text-sand-100 antialiased selection:bg-gold-500 selection:text-navy-950 flex flex-col min-h-screen">
+    <html lang="en">
+      <body className="bg-white text-slate-900 antialiased flex flex-col min-h-screen selection:bg-brand-500 selection:text-white">
         <ModalProvider>
           <SmoothScrollProvider>
             <Navbar />
             <main className="flex-grow">{children}</main>
-            <Footer />
           </SmoothScrollProvider>
         </ModalProvider>
       </body>

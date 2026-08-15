@@ -1,96 +1,95 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, Key } from "lucide-react";
-import { siteConfig } from "@/lib/data/content";
+import { siteData } from "@/lib/siteData";
+import { useModal } from "./ModalContext";
+import { ArrowRight, KeyRound } from "lucide-react";
 
 export default function ThreeSecrets() {
-  return (
-    <section className="py-28 bg-navy-900 text-sand-100 relative overflow-hidden">
-      {/* Ambient background glow */}
-      <div className="absolute top-1/2 right-10 w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-[140px] pointer-events-none" />
+  const { openModal } = useModal();
+  const { secrets } = siteData;
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  return (
+    <section id="secrets" className="py-20 md:py-32 bg-brand-25 border-b border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto flex flex-col items-center gap-4 mb-20">
-          <span className="text-xs font-semibold uppercase tracking-widest text-gold-500 flex items-center gap-2">
-            <Key className="w-3.5 h-3.5" />
-            <span>CORE MASTERCLASS CURRICULUM</span>
-          </span>
-          
-          <h2 className="editorial-heading text-4xl sm:text-6xl text-sand-100">
-            3 Secrets You Will Unlock <span className="text-gold-gradient italic font-serif">In This Workshop</span>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 text-brand-900 text-xs font-semibold uppercase tracking-widest">
+            <KeyRound className="w-4 h-4 text-brand-500" />
+            <span>Core Takeaways</span>
+          </div>
+          <h2 className="editorial-heading text-4xl sm:text-5xl md:text-6xl font-bold text-brand-900">
+            {secrets.sectionTitle}
           </h2>
-          
-          <p className="text-sand-200/70 text-sm sm:text-base font-light">
-            A step-by-step framework designed to take you from subconscious friction to lasting freedom.
-          </p>
         </div>
 
-        {/* Vertical Journey Layout */}
-        <div className="relative flex flex-col gap-16 lg:gap-24 max-w-5xl mx-auto">
-          {/* Central connecting line */}
-          <div className="hidden lg:block absolute left-1/2 top-10 bottom-10 w-[1px] bg-gradient-to-b from-gold-500/50 via-sage-500/30 to-gold-500/50 -translate-x-1/2" />
-
-          {siteConfig.threeSecrets.map((secret, idx) => {
-            const isEven = idx % 2 === 0;
-
+        {/* 3 Visual Stages */}
+        <div className="space-y-16 lg:space-y-24 mb-16">
+          {secrets.items.map((sec, idx) => {
+            const isEven = idx % 2 === 1;
+            const stageNum = `0${idx + 1}`;
             return (
               <motion.div
-                key={secret.number}
-                initial={{ opacity: 0, y: 35 }}
+                key={idx}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
-                  isEven ? "" : "lg:flex-row-reverse"
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
+                  isEven ? "lg:flex-row-reverse" : ""
                 }`}
               >
+                {/* Image Side */}
+                <div className={`lg:col-span-6 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
+                  <div className="relative aspect-[4/3] w-full rounded-3xl overflow-hidden bg-white p-3 border border-slate-200/80 shadow-apple">
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                      <Image
+                        src={sec.image}
+                        alt={sec.title}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-700"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {/* Content Side */}
-                <div
-                  className={`lg:col-span-6 flex flex-col gap-4 ${
-                    isEven ? "lg:text-right lg:items-end" : "lg:text-left lg:items-start"
-                  }`}
-                >
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy-800 border border-gold-500/30 text-gold-500 text-xs font-mono font-bold">
-                    <span>SECRET #{secret.number}</span>
+                <div className={`lg:col-span-6 space-y-4 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
+                  <div className="flex items-center gap-4">
+                    <span className="editorial-heading text-6xl sm:text-7xl font-bold text-brand-100">
+                      {stageNum}
+                    </span>
+                    <span className="px-3.5 py-1 rounded-full bg-brand-900 text-white text-xs font-bold uppercase tracking-wider">
+                      {sec.number}
+                    </span>
                   </div>
 
-                  <h3 className="editorial-heading text-3xl sm:text-4xl text-sand-100">
-                    {secret.title} — <span className="text-gold-gradient font-serif italic">{secret.heading}</span>
+                  <h3 className="editorial-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-900">
+                    {sec.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-sand-200/70 font-light leading-relaxed max-w-md">
-                    {secret.description}
+                  <p className="text-base sm:text-xl text-slate-600 leading-relaxed">
+                    {sec.description}
                   </p>
                 </div>
-
-                {/* Center Node Indicator */}
-                <div className="hidden lg:flex lg:col-span-1 justify-center z-10">
-                  <div className="w-10 h-10 rounded-full bg-navy-950 border-2 border-gold-500 flex items-center justify-center text-gold-500 shadow-lg shadow-gold-500/20 font-mono text-xs font-bold">
-                    {secret.number}
-                  </div>
-                </div>
-
-                {/* Image Side */}
-                <div className={`lg:col-span-5 ${isEven ? "lg:order-last" : "lg:order-first"}`}>
-                  <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border border-navy-700/60 shadow-xl group">
-                    <Image
-                      src={secret.image}
-                      alt={secret.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
-                  </div>
-                </div>
-
               </motion.div>
             );
           })}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center pt-8">
+          <button
+            onClick={openModal}
+            className="inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl bg-brand-900 hover:bg-brand-800 text-white font-bold text-base sm:text-lg shadow-apple-hover transition-all transform hover:-translate-y-0.5"
+          >
+            <span>REGISTER NOW FOR FREE</span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
         </div>
 
       </div>
