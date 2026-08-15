@@ -15,15 +15,14 @@ import Certifications from "@/components/Certifications";
 import ClientReviews from "@/components/ClientReviews";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
-import StickyBar from "@/components/StickyBar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 pb-20 sm:pb-24">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900">
       {/* 1. Top Announcement Banner */}
       <TopBanner />
 
-      {/* 2. Cinematic Hero Section */}
+      {/* 2. Hero Section */}
       <HeroSection />
 
       {/* 3. Impact & Experience Counters */}
@@ -61,9 +60,6 @@ export default function Home() {
 
       {/* 14. Footer */}
       <Footer />
-
-      {/* 15. Sticky Workshop Countdown Bar */}
-      <StickyBar />
     </div>
   );
 }
